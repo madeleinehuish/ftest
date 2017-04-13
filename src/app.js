@@ -28,6 +28,55 @@ const carBrands = [
  */
 
 class Typeahead extends React.Component {
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      value: '',
+      defaultArray : props.list,
+      filteredArray : []
+    };
+    console.log(props);
+    this.filter = this.filter.bind(this);
+
+  }
+
+  filter(event) {
+    const evt = event.target.value;
+    let filtered = this.state.defaultArray.filter((item) => {
+      if (item.toUpperCase().includes(evt.toUpperCase()) && item.toUpperCase().indexOf(evt.toUpperCase()) ===0 ) { return true}
+    })
+
+    this.setState({ value: event.target.value });
+
+    if (event.target.value !== '') {
+      this.setState({ filteredArray: filtered });
+    } else {
+      this.setState({ filteredArray: [] })
+    }
+  }
+
+  render() {
+    let currentList = this.state.filteredArray;
+    let mappedList = currentList.map((item) => {
+      return <li>{item}</li>
+    });
+
+    return (
+      <div>
+        <input
+          value={this.state.value}
+          onChange={this.filter}
+        />
+
+        <ul>{mappedList}</ul>
+
+      </div>
+
+    )
+  }
+
+
 }
 
 ReactDOM.render(
