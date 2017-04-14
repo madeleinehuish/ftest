@@ -36,9 +36,8 @@ class Typeahead extends React.Component {
       defaultArray : props.list,
       filteredArray : []
     };
-
+    console.log(props);
     this.filter = this.filter.bind(this);
-    this.onHandleClick = this.onHandleClick.bind(this);
 
   }
 
@@ -49,6 +48,7 @@ class Typeahead extends React.Component {
     })
 
     this.setState({ value: event.target.value });
+    console.log(event.target.value);
 
     if (event.target.value !== '') {
       this.setState({ filteredArray: filtered });
@@ -57,18 +57,19 @@ class Typeahead extends React.Component {
     }
   }
 
-  onHandleClick(event) {
-    let newValue = event.target.innerHTML;
-
-    this.setState({ value: event.target.innerHTML });
-    this.setState({ filteredArray: [] });
-
+  removeListAndPopulateInput(event) {
+    this.setState({ value: event.target.value }, () => {
+      this.setState({ filteredArray: [] })
+    })
   }
 
   render() {
     let currentList = this.state.filteredArray;
     let mappedList = currentList.map((item) => {
-      return <li onClick={this.onHandleClick}>{item}</li>
+      return <li
+								onClick={this.removeListAndPopulateInput}
+								>{item}
+						 </li>
     });
 
     return (

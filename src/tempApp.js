@@ -1,3 +1,4 @@
+//original code
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -36,9 +37,8 @@ class Typeahead extends React.Component {
       defaultArray : props.list,
       filteredArray : []
     };
-
+    console.log(props);
     this.filter = this.filter.bind(this);
-    this.onHandleClick = this.onHandleClick.bind(this);
 
   }
 
@@ -57,27 +57,27 @@ class Typeahead extends React.Component {
     }
   }
 
-  onHandleClick(event) {
-    let newValue = event.target.innerHTML;
-
-    this.setState({ value: event.target.innerHTML });
-    this.setState({ filteredArray: [] });
-
-  }
-
   render() {
     let currentList = this.state.filteredArray;
     let mappedList = currentList.map((item) => {
-      return <li onClick={this.onHandleClick}>{item}</li>
+      return <li>{item}</li>
     });
 
     return (
       <div>
-        <input value={this.state.value} onChange={this.filter} />
+        <input
+          value={this.state.value}
+          onChange={this.filter}
+        />
+
         <ul>{mappedList}</ul>
+
       </div>
+
     )
   }
+
+
 }
 
 ReactDOM.render(
