@@ -1,3 +1,4 @@
+//original code
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -27,6 +28,7 @@ const carBrands = [
  *      value and hide the list.
  */
 
+//this was my original from friday morning
 class Typeahead extends React.Component {
   constructor (props) {
     super(props);
@@ -48,7 +50,6 @@ class Typeahead extends React.Component {
     })
 
     this.setState({ value: event.target.value });
-    console.log(event.target.value);
 
     if (event.target.value !== '') {
       this.setState({ filteredArray: filtered });
@@ -57,28 +58,27 @@ class Typeahead extends React.Component {
     }
   }
 
-  removeListAndPopulateInput(event) {
-    this.setState({ value: event.target.value }, () => {
-      this.setState({ filteredArray: [] })
-    })
-  }
-
   render() {
     let currentList = this.state.filteredArray;
     let mappedList = currentList.map((item) => {
-      return <li
-								onClick={this.removeListAndPopulateInput}
-								>{item}
-						 </li>
+      return <li>{item}</li>
     });
 
     return (
       <div>
-        <input value={this.state.value} onChange={this.filter} />
+        <input
+          value={this.state.value}
+          onChange={this.filter}
+        />
+
         <ul>{mappedList}</ul>
+
       </div>
+
     )
   }
+
+
 }
 
 ReactDOM.render(

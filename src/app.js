@@ -27,6 +27,7 @@ const carBrands = [
  *      value and hide the list.
  */
 
+//I cleaned it up a little and added part 4 : the onHandleClick method, the original is saved as fridayMorningFinalApp.js
 class Typeahead extends React.Component {
   constructor (props) {
     super(props);
