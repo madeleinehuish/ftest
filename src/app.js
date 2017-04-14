@@ -46,7 +46,7 @@ class Typeahead extends React.Component {
   filter(event) {
     const evt = event.target.value;
     let filtered = this.state.defaultArray.filter((item) => {
-      if (item.toUpperCase().includes(evt.toUpperCase()) && item.toUpperCase().indexOf(evt.toUpperCase()) ===0 ) { return true}
+      if (item.toUpperCase().includes(evt.toUpperCase()) && item.toUpperCase().indexOf(evt.toUpperCase()) === 0 ) { return true}
     })
 
     this.setState({ value: evt });
@@ -59,7 +59,6 @@ class Typeahead extends React.Component {
   }
 
   onHandleClick(event) {
-    let newValue = event.target.innerHTML;
 
     this.setState({ value: event.target.innerHTML });
     this.setState({ filteredArray: [] });
