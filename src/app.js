@@ -68,8 +68,8 @@ class Typeahead extends React.Component {
 
   render() {
     let currentList = this.state.filteredArray;
-    let mappedList = currentList.map((item) => {
-      return <li onClick={this.onHandleClick}>{item}</li>
+    let mappedList = currentList.map((item, index) => {
+      return <li onClick={this.onHandleClick} key={index.toString()}>{item}</li>
     });
 
     return (
