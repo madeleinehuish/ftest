@@ -49,9 +49,9 @@ class Typeahead extends React.Component {
       if (item.toUpperCase().includes(evt.toUpperCase()) && item.toUpperCase().indexOf(evt.toUpperCase()) ===0 ) { return true}
     })
 
-    this.setState({ value: event.target.value });
+    this.setState({ value: evt });
 
-    if (event.target.value !== '') {
+    if (evt !== '') {
       this.setState({ filteredArray: filtered });
     } else {
       this.setState({ filteredArray: [] })
